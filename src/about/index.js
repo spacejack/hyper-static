@@ -1,6 +1,6 @@
 const path = require('path')
-const md = require('./lib/md')
-const layout = require('./layout')
+const md = require('../lib/md')
+const layout = require('../layout')
 
 const mdFilename = path.resolve(__dirname, 'index.md')
 

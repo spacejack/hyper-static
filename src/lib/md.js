@@ -5,10 +5,12 @@ const marked = require('marked')
 /**
  * Markdown parser helper
  * @param {string} filename Filename of .md file
+ * @param {HyperscriptElement?} Optional element to contain output
  * @returns {*} A Hyperscript element
  */
-module.exports = function md (filename) {
-	const dom = h('div')
+module.exports = function md (filename, dom) {
+	// TODO: How not to wrap in container element?
+	dom = dom || h('div')
 	dom.innerHTML = marked(fs.readFileSync(filename, 'utf8'))
 	return dom
 }

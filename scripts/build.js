@@ -1,3 +1,9 @@
+// @ts-check
+
+// Entry point of static site generation
+
+'use strict'
+
 const fs = require('fs')
 const path = require('path')
 const h = require('hyperscript')
@@ -6,24 +12,22 @@ const h = require('hyperscript')
 
 /** All pages to generate */
 const pages = {
-	'index': require('../src/index')
-	//'page/index'
+	'index': require('../src/index'),
+	'about/index': require('../src/about/index')
 }
 const pageKeys = Object.keys(pages)
 
-const src = path.resolve(__dirname, '../src')
-const pub = path.resolve(__dirname, '../public')
+const pubDir = path.resolve(__dirname, '../public')
 
 /** Create all needed directories */
 function mkDirs() {
-	if (!fs.existsSync(pub)) {
-		fs.mkdirSync(pub)
-		console.log(`Created directory '${pub}'`)
+	if (!fs.existsSync(pubDir)) {
+		fs.mkdirSync(pubDir)
+		console.log(`Created directory '${pubDir}'`)
 	}
 	for (const pg of pageKeys) {
-		const parts = pg.split('/')
-		if (parts.length > 1) {
-			const dir = pub + '/' + parts[0]
+		for (const dirPart of pg.split('/').slice(0, -1)) {
+			const dir = pubDir + '/' + dirPart
 			if (!fs.existsSync(dir)) {
 				fs.mkdirSync(dir)
 				console.log(`Created directory "${dir}"`)
@@ -41,7 +45,7 @@ function renderFile (filename, dom) {
 
 function renderPages() {
 	for (const page of pageKeys) {
-		renderFile(`${pub}/${page}.html`, pages[page](h))
+		renderFile(`${pubDir}/${page}.html`, pages[page](h))
 	}
 }
 
