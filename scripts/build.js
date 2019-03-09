@@ -17,7 +17,8 @@ const pages = {
 }
 const pageKeys = Object.keys(pages)
 
-const pubDir = path.resolve(__dirname, '../public')
+/** Directory to publish to */
+const pubDir = path.resolve(__dirname, '..', 'public')
 
 /** Create all needed directories */
 function mkDirs() {
