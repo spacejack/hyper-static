@@ -1,6 +1,6 @@
 {
   "name": "hyper-static",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "HyperScript/Markdown-based Static Site Generator",
   "main": "index.js",
   "watch": {
@@ -11,8 +11,10 @@
     "watch:pcss": "postcss src/index.pcss --watch -o public/style.css",
     "build:html": "node scripts/build",
     "build:pcss": "postcss src/index.pcss --env production -o public/style.css",
+    "clean:html": "node scripts/build clean",
+    "clean:pcss": "rm -f public/style.css",
     "build": "run-s build:*",
-    "clean": "rm -f public/index.html public/style.css && rm -fr public/about",
+    "clean": "run-s clean:*",
     "budo": "budo -d public -p 3000 -l=*.{html,css}",
     "start": "run-p budo watch:*"
   },

@@ -2,7 +2,7 @@
 
 A bare-bones static site generator using [Hyperscript](https://github.com/hyperhype/hyperscript), [Marked](https://github.com/markedjs/marked) and [PostCSS](https://github.com/postcss/postcss).
 
-This is not a library, it's a starter project that you can use as a base and customize for the site you're building. It's meant to be simple and transparent so that it's easy to change anything.
+This is not a library or framework, it's a starter project that you can use as a base and customize for the site you're building. It's meant to be simple and transparent so that it's easy to change anything.
 
 ## Install
 
